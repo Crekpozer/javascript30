@@ -54,15 +54,38 @@
 
 
 <script>
-    window.addEventListener('keydown', function(e){
+    
+    function playSound(e) {
+        
         const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+        // Faz com que const audio armazene o elemento que contem o som
+        
         const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
-        if(!audio) return; // Faz com que a função não funcione tudo de uma vez
-
+        //Faz com que const key busque pela tecla que foi pressionada
+        
+        if(!audio) return;
+        // Faz com que a função não funcione tudo de uma vez
+        
         audio.currentTime = 0 // Rebobina o audio
         audio.play() // Toca o audio
-        console.log(`Tecla: ${e.key} Codigo: ${e.keyCode}`)
-    })
+        key.classList.add('playing') // Adiciona a classe 'playing' no elemento 
+        //console.log(`Tecla: ${e.key} Codigo: ${e.keyCode}`)
+        // [DEBUG] Mostra qual a tecla e o 'keyCode' dessa tecla
+    }
+    
+    function removeTransition(e){
+        if(e.propertyName !== 'transform') return; // Ignora eventos que não sejam um 'transform'
+        this.classList.remove('playing') // Remove a classe 'playing' do elemento
+
+    }
+    
+    
+    const keys = document.querySelectorAll('.key') // Busca todos os elementos com '.key'
+    
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+    // Coloca um 'event listener' para quando a transição acabar em cada '.key' dentro do vetor 'keys' e ativando a função 'removeTransition'
+    
+    window.addEventListener('keydown', playSound)
 </script>
 </body>
 </html>
