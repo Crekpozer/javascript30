@@ -55,7 +55,13 @@
 
 <script>
     window.addEventListener('keydown', function(e){
-        console.log(e)
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+        if(!audio) return; // Faz com que a função não funcione tudo de uma vez
+
+        audio.currentTime = 0 // Rebobina o audio
+        audio.play() // Toca o audio
+        console.log(`Tecla: ${e.key} Codigo: ${e.keyCode}`)
     })
 </script>
 </body>
