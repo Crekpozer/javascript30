@@ -91,7 +91,7 @@
             const minutes = now.getMinutes() /* Pega o valor atual de minutos e marmazena */
             const hour = now.getHours() /* Pega o valor atual de horas e marmazena */
             
-            const hourDegrees = ((hour / 24) * 360) + 90;
+            const hourDegrees = ((hour / 12) * 360) + 90;
             const minutesDegrees = ((minutes / 60) * 360) + 90;
             const secondsDegrees = ((seconds / 60) * 360) + 90;
             /* Calcula qual o grau certo para cada segundo
