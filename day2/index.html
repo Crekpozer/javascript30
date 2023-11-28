@@ -7,17 +7,17 @@
 </head>
 <body>
     
-    <div class="clock"> // Elemento que junta o Relogio
-        <div class="clock-face"> // Face branca do Relogio
-            <div class="hand hour-hand"></div> // Braço que indica as horas
-            <div class="hand min-hand"></div> // Braço que indica os minutos
-            <div class="hand second-hand"></div> // Braço que indica os segundos
+    <div class="clock"> <!--Elemento que junta o Relogio--> 
+        <div class="clock-face"> <!--Face branca do Relogio-->
+            <div class="hand hour-hand"></div> <!--Braço que indica as horas-->
+            <div class="hand min-hand"></div> <!--Braço que indica os minutos-->
+            <div class="hand second-hand"></div> <!--Braço que indica os segundos-->
         </div>
     </div>
 
     <style>
         html{
-            background: #018DED url(http://unbsplash.it/1500/1000?image=881&blur=50);
+            background: #018DED url(http://unbsplash.it/1500/1000?image=881);
             background-size: cover;
             font-family: 'helvetica neue';
             text-align: center;
@@ -38,26 +38,73 @@
             border: 20px solid white;
             border-radius: 50%;
             margin: 50px auto;
+            position: relative;
+            padding: 2rem;
+            box-shadow: 
+            0 0 0px 4px rgba(0,0,0,0.1),
+            inset 0 0 0 3px #EFEFEF,
+            inset 0 0 10px black,
+            0 0 10px rgba(0,0,0,0.2);
         }
 
+        .clock-face{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform: translateY(-3px);
+        }
+        
         .hand{
-            width: 17.5%;
+            width: 50%;
             height: 6px;
             background: black;
             position: absolute;
             top: 50%;
-            transform-origin: 100%;
             transform: rotate(90deg);
+            transform-origin: 100%;
+            transition: all 0.05s;
+        }
+
+        .hour-hand{
+            background: rgba(0, 0, 0, 0.644);
+        }
+
+        .minute-hand{
+            background: black;
+        }
+
+        .second-hand{
+            background: red;
+            height: 4px;
         }
     </style>
 
     <script>
+        const secondHand = document.querySelector('.second-hand')
+        const minuteHand = document.querySelector('.min-hand')
+        const hourHand = document.querySelector('.hour-hand')
+
+
         function setDate(){ /* Função que pega dados de hora do cliente */
             const now = new Date() /* Armezena a data e hora do cliente */
             const seconds = now.getSeconds() /* Pega o valor atual de segundos e marmazena */
-            const secondsDegrees = ((seconds / 60) * 360)
+            const minutes = now.getMinutes() /* Pega o valor atual de minutos e marmazena */
+            const hour = now.getHours() /* Pega o valor atual de horas e marmazena */
             
-
+            const hourDegrees = ((hour / 24) * 360) + 90;
+            const minutesDegrees = ((minutes / 60) * 360) + 90;
+            const secondsDegrees = ((seconds / 60) * 360) + 90;
+            /* Calcula qual o grau certo para cada segundo
+            //
+            // 'Seconds' representa o segundo atual
+            // '60' é a quantidade de segundos que temos em um minuto
+            // '360' é a quantidade de graus de um circulo completo
+            // '90' é um ajuste para o que o ponteiro marque a hora corretamente,
+            //começando de cima em vez de começar pela esquerda */ 
+            
+            secondHand.style.transform = `rotate(${secondsDegrees}deg)`
+            minuteHand.style.transform = `rotate(${minutesDegrees}deg)`
+            hourHand.style.transform = `rotate(${hourDegrees}deg)`
         }
         
         setInterval(setDate, 1000) 
