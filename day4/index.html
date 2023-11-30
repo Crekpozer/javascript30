@@ -7,7 +7,7 @@
 </head>
 <body>
     <script>
-        const inventors = [
+        const inventores = [
             { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
             { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
             { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
@@ -17,7 +17,17 @@
             { first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
         ]
 
-        const people = ['Beck, Glenn', 'Becker Carl', 'Beckette, Samuel', 'Beddoe, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Bensonm, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhand, Sandra', 'Berra, yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Bidn, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birell, Augustine', 'Blac Elk', 'Blair, Robert', 'Blair, Tony', 'Black, William'];
+        const pessoas = ['Beck, Glenn', 'Becker Carl', 'Beckette, Samuel', 'Beddoe, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Bensonm, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhand, Sandra', 'Berra, yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Bidn, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birell, Augustine', 'Blac Elk', 'Blair, Robert', 'Blair, Tony', 'Black, William'];
+
+        // array.prototype.filter()
+        // 1. Filtra a lista de inventores por aquele que estavam vivos em 1500
+        const milEQuinhentos = inventores.filter(function(inventor){ // Passará em todos os inventores
+            if(inventor.year >= 1500 && inventor.year < 1000){ // Decide se aquele cientista se encaixa no padrão
+                return true; // Fica com o cientista
+            } // Não ha necessidade de um 'else', pois sem o 'else' ele simplesmente não fará nada com o objeto
+        })
+
+        console.table(milEQuinhentos)
     </script>
 </body>
 </html>
