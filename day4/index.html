@@ -39,8 +39,25 @@
 
         // array.prototype.reduce()
         // 4. How many years did all the inventors live?
-
+        const totalYears = inventors.reduce((total, inventor) => {
+            return total = (inventor.passed - inventor.year)
+        }, 0)
         
+
+        console.log(totalYears)
+
+        // 5. Organiza os inventores pelo ano que eles viveram
+        const oldest = inventors.sort(function(a, b){
+            const lastGuy = a.passed - a.year;
+            const nextGuy = b.passed - b.year;
+            return lastGuy >nextGuy ? -1 : 1;
+        })
+
+        // 6. Crie uma lista de avenidas em Paris that contain 'de' em qualquer lugar do nome
+        // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+        const category = document.querySelector('.mw-category');
+        const links = category.querySelectorAll('a')
     </script>
 </body>
 </html>
