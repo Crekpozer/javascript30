@@ -17,7 +17,7 @@
             { first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
         ]
 
-        const people = ['Beck, Glenn', 'Becker Carl', 'Beckette, Samuel', 'Beddoe, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Bensonm, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhand, Sandra', 'Berra, yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Bidn, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birell, Augustine', 'Blac Elk', 'Blair, Robert', 'Blair, Tony', 'Black, William'];
+        const people = ['Beck, Glenn', 'Becker Carl', 'Beckette, Samuel', 'Beddoe, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Bensonm, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhand, Sandra', 'Berra, yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Bidn, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birell, Augustine', 'Blac, Elk', 'Blair, Robert', 'Blair, Tony', 'Black, William'];
 
         // array.prototype.filter()
         // 1. Filtra a lista de inventores por aquele que estavam vivos em 1500
@@ -26,7 +26,8 @@
         console.table(fifteen)
 
         // array.prototype.map
-        // 2. Nos traz um inventario de primeiros e ultimos nomes
+        // 2. Retorna um vetor do mesmo tamanho que foi oferecido, nesse caso, nos dando
+        // os nomes completos dos CIENTISTAS 
         const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`)
 
         console.table(fullNames)
@@ -38,7 +39,7 @@
         console.table(ordered)
 
         // array.prototype.reduce()
-        // 4. How many years did all the inventors live?
+        // 4. Quantos anos todos eles viveram?
         const totalYears = inventors.reduce((total, inventor) => {
             return total = (inventor.passed - inventor.year)
         }, 0)
@@ -50,14 +51,35 @@
         const oldest = inventors.sort(function(a, b){
             const lastGuy = a.passed - a.year;
             const nextGuy = b.passed - b.year;
-            return lastGuy >nextGuy ? -1 : 1;
+            return lastGuy > nextGuy ? -1 : 1;
         })
 
         // 6. Crie uma lista de avenidas em Paris that contain 'de' em qualquer lugar do nome
         // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-        const category = document.querySelector('.mw-category');
-        const links = category.querySelectorAll('a')
+        // Esse exercicio é feito no devtools no link indicado acima
+        // Esse exercicio tem como objetivo  a pratica de elementos DOM
+        
+        /*
+        const category = document.querySelector('.mw-category'); 
+        const links = Array.from(category.querySelectorAll('a'));
+        
+        const de = links
+            .map(link => link.textContent)
+            .filter(streetName => streetName.includes('de'))
+        })
+
+        */
+
+
+        // 7. Exercicio de sort
+        // Coloque ordem alfabetica pelo ultimo nome
+        const alpha = people.sort(function(lastOne, nextOne) {
+            const parts= lastOne.split(', ')
+            console.log(parts)
+        })
+
+        
     </script>
 </body>
 </html>
