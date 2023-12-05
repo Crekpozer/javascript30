@@ -74,12 +74,33 @@
 
         // 7. Exercicio de sort
         // Coloque ordem alfabetica pelo ultimo nome
-        const alpha = people.sort(function(lastOne, nextOne) {
-            const parts= lastOne.split(', ')
-            console.log(parts)
+        const alpha = people.sort((lastOne, nextOne) => {
+            const [aLast, aFirst] = lastOne.split(', ')
+            const [bLast, bFirst] = nextOne.split(', ')
+            return aLast > bLast ? 1 : -1
         })
+        console.log(alpha)
+
+        // 8. Exercicio de reduce
+        // Some as vezes que cada palavra aparece
+        const data = ['car', 'car', 'truck', 'truck','bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ]
 
         
+        // Esse codigo cria um objeto dentro da const 'transportation'
+        // que contem um nome/key (obj) e uma quantiodade (item)
+        // quando a função não encontrar um objeto, ele receberá 0, 
+        // mas quando ele encontrar o objeto dentro da const ele somará 
+        // mais um ao valor encontrado. 
+        const transportation = data.reduce((obj, item) => {
+            if(!obj[item]) {
+                obj[item] = 0; 
+            }
+
+            obj[item]++
+            return obj
+         }, {})
+
+         console.table(transportation)
     </script>
 </body>
 </html>
