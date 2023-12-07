@@ -7,7 +7,6 @@
 </head>
 <body>
     <style>
-        
         html {
             box-sizing: border-box;
             background: #ffc600;
@@ -37,8 +36,8 @@
             text-align: center;
             align-items: center;
             transition: 
-                font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
-                flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+            font-size 0.7s ease-out,
+                flex 0.7s ease-out,
                 background 0.2s;
             font-size: 20px;
             background-size: cover;
@@ -51,7 +50,7 @@
         }
 
         .panel1 { background-image: url(image/pexels-anna-lowe-2446930.jpg);}
-        .panel2 { background-image: url(image/pexels-craig-adderley-1525612.jpg)}
+        .panel2 { background-image: url(image/pexels-craig-adderley-1525612.jpg);}
         .panel3 { background-image: url(image/pexels-deva-darshan-1123972.jpg);}
         .panel4 { background-image: url(image/pexels-dlkr-9994331.jpg);}
         .panel5 { background-image: url(image/pexels-itzyphoto-3031243.jpg);}
@@ -60,7 +59,6 @@
             margin: 0;
             width: 100%;
             transition: transform 0.5s;
-            border: 1px solid red;
             flex: 1 0 auto;
             display: flex;
             justify-content: center;
@@ -68,15 +66,15 @@
         }
 
         .panel > *:first-child{transform: translateY(-100%);}
-        .panel.open-active > *:first-child {transform: translateY(0);}
+        .panel.open-active > *:first-child {transform: translateY(0%);}
         .panel > *:last-child{transform: translateY(100%);}
-        .panel.open-active > *:last-child{transform: translateY(0);}
+        .panel.open-active > *:last-child{transform: translateY(0%);}
 
         .panel p{
             text-transform: uppercase;
             font-family: 'Amatic SC', cursive;
             text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
-            font-size: em;
+            font-size: 2em;
         }
 
         .panel p:nth-child(2){
@@ -94,36 +92,50 @@
         }
     </style>
 
+    <script>
+
+        function Activate(panel){
+            panel.classList.toggle('open')
+            panel.classList.toggle('open-active')
+        }
+
+        function Deactivate(panel){
+            panel.classList.toggle('open')
+            panel.classList.toggle('open-active')
+        }
+    </script>
+
     <div class="panels">
-        <div class="panel panel1">
+        <div class="panel panel1" onmouseenter="Activate(this)" onmouseleave="Deactivate(this)">
             <p>Hey</p>
             <p>Let's</p>
             <p>Dance</p>
         </div>
 
-        <div class="panel panel2">
+        <div class="panel panel2" onmouseenter="Activate(this)" onmouseleave="Deactivate(this)">
             <p>Give</p>
             <p>Take</p>
             <p>Receive</p>
         </div>
 
-        <div class="panel panel3">
+        <div class="panel panel3" onmouseenter="Activate(this)" onmouseleave="Deactivate(this)">
             <p>Experience</p>
             <p>It</p>
             <p>Today</p>
         </div>
 
-        <div class="panel panel4">
+        <div class="panel panel4" onmouseenter="Activate(this)" onmouseleave="Deactivate(this)">
             <p>Give</p>
             <p>All</p>
             <p>You can</p>
         </div>
 
-        <div class="panel panel5">
+        <div class="panel panel5" onmouseenter="Activate(this)" onmouseleave="Deactivate(this)">
             <p>Life</p>
             <p>In</p>
             <p>Motion</p>
         </div>
     </div>
+
 </body>
 </html>
