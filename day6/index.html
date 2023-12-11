@@ -22,7 +22,14 @@
             .then(blob => blob.json()) // Acha um muntuado de bagunça e trnasforma em um json
             .then(data => estados.push(...data.states)) // Move a bagunça de dentro do JSON para uma variavel
         
-        
+        function acharPares(palavraParaProcurar, estados) {
+            return estados.filter(lugar => {
+                // Aqui a gente precisa descobrir se a cidade ou o estado combina com o que foi procurado
+
+                const regex = new RegExp(palavraParaProcurar, 'gi')
+                return lugar.name.match(regex) || lugar.cities.match(regex)
+            })
+        }
         
     </script>
 
