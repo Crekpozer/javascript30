@@ -19,7 +19,7 @@
         fetch(endpoint)
 
             // Procura por algo
-            .then(blob => blob.json()) // Acha um muntuado de bagunça e trnasforma em um json
+            .then(blob => blob.json()) // Acha um muntuado de bagunça e transforma em um json
             .then(data => estados.push(...data.states)) // Move a bagunça de dentro do JSON para uma variavel
         
         function findMatches(wordToMatch, cities){
@@ -29,7 +29,7 @@
 
                 const regex = new RegExp(wordToMatch, 'gi')
                 for (i = 0; i <= cities.length; i++){
-                    console.table(cities.name.match(regex)) && console.table(cities.cities[i].match(regex))
+                    return 
                 }
             })
         }
