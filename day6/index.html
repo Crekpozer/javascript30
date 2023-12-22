@@ -10,27 +10,30 @@
     <script>
         
         // Lugar de onde vai ser tirado os dados
-        const endpoint = 'https://gist.githubusercontent.com/djalmaaraujo/3013866/raw/ca994a43520c0cb67baf007b1e66e925bef1bf5a/brazil-cities-states-en.json';
+        const endpoint = 'https://gist.githubusercontent.com/letanure/3012978/raw/6938daa8ba69bcafa89a8c719690225641e39586/estados-cidades2.json';
 
         // Variavel que vai armazenar esses dados
-        const estados = []
+        const estados = {}
+        const cidades= []
 
         // Procura no endpoint por algo (serio, qualquer coisa)
         fetch(endpoint)
 
             // Procura por algo
             .then(blob => blob.json()) // Acha um muntuado de bagunça e transforma em um json
-            .then(data => estados.push(...data.states)) // Move a bagunça de dentro do JSON para uma variavel
-        
+            .then(data => estados) // Move a bagunça de dentro do JSON para uma variavel
+            .then(data => cidades.push(data.cities))
+    
+
         function findMatches(wordToMatch, cities){
             return cities.filter(place => {
-                console.table(cities)
-
-
                 const regex = new RegExp(wordToMatch, 'gi')
-                for (i = 0; i <= cities.length; i++){
-                    return 
-                }
+                
+                //estados.push(...estados[0])
+                //cidades.push(...cidades[0])
+
+                console.table(estados)
+                console.table(cidades)
             })
         }
         
