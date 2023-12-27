@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardio com arrays 2</title>
+</head>
+<body>
+    <script>
+        //## Dia 2 de cardio com arrays
+
+        const people = [
+            { name: 'Wes', year: 1988 },
+            { name: 'Kait', year: 1986 },
+            { name: 'Irv', year: 1970 },
+            { name: 'Lux', year: 2015 },
+        ]
+
+        const comments = [
+            { text: 'Love this!', id: 523423 },
+            { text: 'Super good', id: 823423 },
+            { text: 'You are the best', id: 2039842 },
+            { text: 'Ramen is my fav food ever!', id: 123523 },
+            { text: 'Nice Nice Nice!', id: 542328 }
+        ]
+
+        // Some & Every
+        // array.prototype.some() // is at least one person 19?
+        // Checa se pelo menos 1 valor bate com o que você está procurando
+        const isAdult = people.some(person => ((new Date())
+            .getFullYear()) - person.year >= 19 )
+
+        console.log({isAdult}) // True: um valor bate, False: nenhum valor bate
+        
+        // array.prototype.every() // is everyone 19?
+        // Checa se todos os valores são o que você está procurando
+        const allAdults = people.every(person => ((new Date())
+            .getFullYear()) - person.year >= 19 )
+
+        console.log(allAdults) // True: Todos são adultos, False: Ninguem é adulto
+
+        // array.prototype.find() 
+        // Find é como o Filter, mas só retorna o primeiro valor que bate com o que está sendo procurado.
+        const comment = comments.find(comment => comment.id === 823423)
+
+        console.log(comment) 
+
+        // array.prototype.findIndex()
+        // Acha o Index de onde está o valor que está sendo procurado
+        // Delete o comentario com o id 823423
+        const index = comments.findIndex(comment => comment.id === 823423)
+        console.log(index)
+
+        //comments.splice(index, 1)
+        const newComments = [
+            ...comments.slice(0, index),
+            ...comments.slice(index + 1)
+        ]
+        
+    </script>
+</body>
+</html>
