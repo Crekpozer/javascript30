@@ -19,10 +19,27 @@
         canvas.width = window.innerWidth - 20
         canvas.height = window.innerHeight - 24
 
-        ctx.strokeStyle = '#BADA55'
-        ctx.lineJoin = 'round'
-        ctx.lineCap = 'round'
+        ctx.strokeStyle = '#BADA55' // Define a cor do traço
+        ctx.lineJoin = 'round' // Define o formato do fim do traço
+        ctx.lineCap = 'round' // Define o formato do inicio do traço
 
+        let isDrawing = false
+        let lastX = 0
+        let lastY = 0
+
+        function draw(e) {
+            if(!isDrawing) return // Faz com que só funcione quando o mouse está pressionado
+            console.log(e)
+            ctx.beginPath() // Esse metodo deve ser chamado sempre antes de começar 
+            ctx.moveTo(lastX, lastY) // Cira um sub-caminho nas coordenada X e Y
+            ctx.lineTo(e.offsetX, e.offsetY) // Desenha uma linha a partir de um sub-caminho até as coordenadas X e Y
+            ctx.stroke()
+        }
+
+        canvas.addEventListener('mousemove', draw)
+        canvas.addEventListener('mousedown', () => isDrawing = true)
+        canvas.addEventListener('mouseup', () => isDrawing = false)
+        canvas.addEventListener('mouseout', () => isDrawing = false)
     </script>
 
     <style>
