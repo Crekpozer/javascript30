@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diversão com HTML Canvas</title>
+</head>
+<body>
+    
+    <!-- Desenha o canvas na tela -->
+    <canvas id="draw" width="800" height="800"></canvas>
+
+    <script>
+        const canvas = document.querySelector('#draw') // Amarzena o canvas numa variavel
+        const ctx = canvas.getContext('2d') // Indica ao canvas em que contexto ele vai ser usado
+        
+        // Altera a largura e a altura do canvas para a largura e altura interna da janela
+        // "- 20" e "- 24" são para evitar as barras de rolagem
+        canvas.width = window.innerWidth - 20
+        canvas.height = window.innerHeight - 24
+
+        ctx.strokeStyle = '#BADA55'
+        ctx.lineJoin = 'round'
+        ctx.lineCap = 'round'
+
+    </script>
+
+    <style>
+        html, body{
+            margin: 0px;
+        }
+
+        #draw {
+            border:  1px solid black;
+        }
+    </style>
+</body>
+</html>
