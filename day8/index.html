@@ -22,22 +22,50 @@
         ctx.strokeStyle = '#BADA55' // Define a cor do traço
         ctx.lineJoin = 'round' // Define o formato do fim do traço
         ctx.lineCap = 'round' // Define o formato do inicio do traço
+        ctx.lineWidth = 100 // Define a grossura do traço
 
         let isDrawing = false
         let lastX = 0
         let lastY = 0
+        let hue = 0
+        let direction = true
 
         function draw(e) {
             if(!isDrawing) return // Faz com que só funcione quando o mouse está pressionado
             console.log(e)
+
+            ctx.strokeStyle = `hsl(${hue}, 100%, 50%)` // Define a cor do traço em HSL
             ctx.beginPath() // Esse metodo deve ser chamado sempre antes de começar 
             ctx.moveTo(lastX, lastY) // Cira um sub-caminho nas coordenada X e Y
             ctx.lineTo(e.offsetX, e.offsetY) // Desenha uma linha a partir de um sub-caminho até as coordenadas X e Y
             ctx.stroke()
+            
+            lastX = e.offsetX
+            lastY = e.offsetY
+
+            hue++ // Incrementa do Hue para que a cor mude
+            if (hue >= 360) { // Evita que o valor de Hue fique maior que 360
+                hue = 0
+            }
+
+            if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) { // Define os limites da grossura da linha
+                direction = !direction // Muda a direção do tamanho da linha
+            }
+
+            if (direction) { // De acordo com a direção da grossura da linha (Valor subindo ou Valor descendo)
+                ctx.lineWidth++ // Aumenta o valor da grossura da linha
+            } else {
+                ctx.lineWidth-- // Diminui o valor da grossura da linha
+            }
         }
+        
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true
+            lastX = e.offsetX
+            lastY = e.offsetY
+        })
 
         canvas.addEventListener('mousemove', draw)
-        canvas.addEventListener('mousedown', () => isDrawing = true)
         canvas.addEventListener('mouseup', () => isDrawing = false)
         canvas.addEventListener('mouseout', () => isDrawing = false)
     </script>
