@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Checkbox com o shift</title>
 </head>
+
 <body>
     <div class="inbox">
         <div class="item">
             <input type="checkbox">
-            <p>This is an inbox layout.</p>
+            <p>This is an inbox layout</p>
         </div>
         <div class="item">
             <input type="checkbox">
@@ -24,7 +25,7 @@
         </div>
         <div class="item">
             <input type="checkbox">
-            <p>try do it with out any libraries</p>
+            <p>Try do it with out any libraries</p>
         </div>
         <div class="item">
             <input type="checkbox">
@@ -35,5 +36,65 @@
             <p>Good Luck!</p>
         </div>
     </div>
+
+    <script>
+        const checkboxes = document.querySelectorAll('.item input[type="checkbox"]')
+        
+        console.log(checkboxes)
+
+        checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck))
+
+        function handleCheck(e){
+            console.log(e)
+            
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 5px;
+            padding: 5px;
+            font-family: sans-serif;
+        }
+
+        body {
+            background-color: lightblue;
+        }
+
+        .inbox {
+            width: 360px;
+            background-color: bisque;
+            border-radius: 5px;
+            
+            position: absolute;
+            left: 50vw;
+            top: 50vh;
+            transform: translate(-50%, -50%);
+        }
+
+        .item {
+            background: white;
+            border-radius: 7px;
+            box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.397);
+            margin: 8px 10px;
+        }
+
+        .item > input {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        .item > input::after {
+            content: '|';
+            position: absolute;
+            transform: translate(23px, -2px);
+            color: rgba(0, 0, 0, 0.76);
+        }
+
+        .item > p {
+            display: inline-block;
+        }
+    </style>
 </body>
 </html>
