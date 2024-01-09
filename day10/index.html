@@ -38,15 +38,40 @@
     </div>
 
     <script>
+        // Procura e armazena as Checkboxes num array
         const checkboxes = document.querySelectorAll('.item input[type="checkbox"]')
-        
-        console.log(checkboxes)
 
+        // Coloca um Event Listener para o click dentro das checkboxes
         checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck))
 
+        let lastChecked; // Armazena o item marcado
+
         function handleCheck(e){
-            console.dir(e.target)
-            console.dir(checkboxes[1])
+            
+            let inBetween = false
+            
+            // Checa se tem algum valor checado e checa se o shift está pressionado
+            if(e.shiftKey && this.checked) {
+                // Passa por todos indices do array checkboxes
+                checkboxes.forEach(checkbox => {
+                    console.log(checkbox)
+                    if (checkbox === this || checkbox === lastChecked){
+                    
+                        inBetween = !inBetween // Indica se o valor está entre dois valores selecionados com o Shift
+
+                        // [DEBUG] indica no console quando ele começa a detectar os itens do meio e
+                        // quando ele para de detectar
+                        console.log('Itens do meio') 
+                    }
+
+                    if(inBetween){
+                        checkbox.checked = true 
+                    }
+                })
+            }
+            
+            
+            lastChecked = this
             
         }
     </script>
