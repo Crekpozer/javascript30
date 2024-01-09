@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+body{
+    background-image: radial-gradient(at 0% 0%, purple, blue);
+    background-size: 100vh 100vh;
+    background-position: left top;
+}
+
+.player{
+    width: 640px;
+    height: 360px;
+    background-color: black;
+}
+
+video{
+    width: 640px;
+    height: 360px;
+}
+
+.player__controls{
+    text-align: center;
+    border: 1px solid red;
+}
