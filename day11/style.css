@@ -4,6 +4,7 @@ body{
     background-image: radial-gradient(at 0% 0%, purple, blue);
     background-size: 100vh 100vh;
     background-position: left top;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .player{
@@ -13,7 +14,11 @@ body{
 }
 
 .progress{
-    background-color: orange;
+    
+}
+
+.progress__filled{
+    color: orange;
 }
 
 video{
