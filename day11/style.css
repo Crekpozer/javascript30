@@ -12,6 +12,10 @@ body{
     background-color: black;
 }
 
+.progress{
+    background-color: orange;
+}
+
 video{
     width: 640px;
     height: 360px;
