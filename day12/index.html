@@ -8,17 +8,24 @@
 </head>
 <body>
     <script>
+        // Cria um array para armazenar as teclas soltas
         const pressed = []
-        const secretCode = 'wesbos'
+        
+        // Defini qual o codigo secreto que o usuario precisa digitar
+        const secretCode = 'wesbos'   
 
-        window.addEventListener('keyup', (e) => {
-            console.log(e.key)
-            pressed.push(e.key)
+        // Adiciona um eventListener para detectar a tecla
+        window.addEventListener('keyup', (e) => { 
+            console.log(e.key) // [DEBUG] mostra no console a tecla que foi solta
+            pressed.push(e.key) // Adiciona a tecla que foi solta  ao array
+            
+            // Limita o tamanho do array e faz com que ele seja lido de traz para frente
             pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length)
 
+            // Junta todos os valores no array e detecta se o valor no array é igual a secretCode
             if(pressed.join('').includes(secretCode)) {
-                console.log('DING DING!')
-                cornify_add()
+                console.log('DING DING!') //[DEBUG] Avisa no console quando o codigo é detectado dentro do array
+                cornify_add() // Mostra lindos unicornios 
             }
 
             console.log(pressed)
