@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Referencia VS Copia</title>
+</head>
+<body>
+    <script>
+        // Começando com strings, numeros e boleanos
+        /*
+        let age = 100
+        let age2 = age
+        console.log(age, age2)
+        age = 200
+        console.log(age, age2)
+
+        let name = 'Erick'
+        let name2 = name
+        console.log(name, name2)
+        name = 'Piupiu'
+        console.log(name, name2)
+        */
+
+        // Vamos dizer que nós temos um array
+        const players = ['Wes', 'Sarah', 'Ryan', 'Poppy']
+
+        // E nós queremos fazer uma copia deles
+        const team = players
+
+        console.log(players, team)
+
+        // Você pode pensar que podemos simplesmente fazer isso
+        team[3] = 'Lux'
+        // Isso edita o array original e não o 'team', pois 'team' é uma referencia ao array 'players'
+    </script>
+</body>
+</html>
