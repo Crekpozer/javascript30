@@ -7,6 +7,8 @@
 </head>
 <body>
     <script>
+        
+        //#region Boleanos, numeros e strings
         // Começando com strings, numeros e boleanos
         /*
         let age = 100
@@ -21,7 +23,9 @@
         name = 'Piupiu'
         console.log(name, name2)
         */
+        //#endregion
 
+        //#region Array's
         // Vamos dizer que nós temos um array
         const players = ['Wes', 'Sarah', 'Ryan', 'Poppy']
 
@@ -30,9 +34,66 @@
 
         console.log(players, team)
 
-        // Você pode pensar que podemos simplesmente fazer isso
+        // Você pode pensar que podemos simplesmente fazer isso, mas isso edita o array original e não o 'team', pois 'team' é uma referencia ao array 'players'
         team[3] = 'Lux'
-        // Isso edita o array original e não o 'team', pois 'team' é uma referencia ao array 'players'
+
+        // Então como eu faço pra copiar esse array?
+
+        // Slice
+        const team2 = players.slice()
+
+        // Ou podemos criar um novo array e concatenar o array velho dentro desse novo
+
+        // Concat
+        const team3 = [].concat(players)
+
+        // Ou podemos usar o novo spread do ES6
+        const team4 = [...players]
+        team4[3] = 'Rakuna Matata'
+        console.log(team4)
+
+        const team5 = Array.from(players)
+
+        // Agora quando a gente atualizar ele, o original vai ficar intacto
+        //#endregion
+        
+        //#region Objetos
+        const person = {
+            name: 'Wes Bos',
+            age: 80
+        }
+
+        // E achamos que fizemos uma copia
+        const captain = person
+        captain.number = 99
+
+        // Então como faz uma copia?
+        // Object.assign({Objeto novo}, Objeto que vai ser copiado, {Valor que vai ser alterado})
+        const cap2 = Object.assign({}, person, { number: 99, age: 12 })
+
+        // No futuro teremos spread para objetos (eu acho)
+        const cap3 = {...person}
+
+        // Nota importante - Isso é só um nivel de profundidade - tanto para Array's como Objetos. Lodash tem um metodo chamada 'cloneDeep', mas você deveria pensar duas vezes antes de usar.
+
+        const erick = {
+            name: 'Erick',
+            age: 100,
+            social: {
+                twitter: '@crekpozer',
+                facebook: 'crekpozer'
+            }
+        }
+
+        console.clear()
+        console.log(erick)
+
+        const dev = Object.assign({}, erick)
+
+        // Retorna uma string que pode ser convertida em objeto posteriormente
+        const dev2 = JSON.parse(JSON.stringify(erick))
+
+        //#endregion
     </script>
 </body>
 </html>
