@@ -5,6 +5,7 @@ html {
     background: url(oh-la-la.jpeg) center no-repeat;
     min-height: 100vh;
     display: flex;
+    justify-content: center;
     align-items: center;
     text-align: center;
     font-family: sans-serif;

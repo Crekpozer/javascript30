@@ -24,6 +24,8 @@
         <form class="add-itens">
             <input type="text" name="item" placeholder="Item name" required>
             <input type="submit" value="+ Add Item">
+            <input type="button" value="Check All" onclick="checkAll()">
+            <input type="button" value="Uncheck All" onclick="uncheckAll()">
         </form>
     </div>
 
@@ -69,6 +71,20 @@
             const index = el.dataset.index;
             items[index].done = !items[index].done
             localStorage.setItem('items', JSON.stringify(items))
+            populateList(items, itemsList)
+        }
+
+        function checkAll(){
+            items.forEach(item => {
+                item.done = true
+            })
+            populateList(items, itemsList)
+        }
+
+        function uncheckAll(){
+            items.forEach(item => {
+                item.done = false
+            })
             populateList(items, itemsList)
         }
 
