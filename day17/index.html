@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio com array sort</title>
+</head>
+<body>
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        html{
+            background: black url(pexels-wendy-wei-1190297.jpg) center no-repeat;
+        }
+
+        .wrap{
+            background-color: white;
+            border: 1px solid black;
+
+            height: 500px;
+            width: 400px;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+        }
+
+        ul{
+            padding: 25px;
+        }
+
+        li{
+            border: 1px solid black;
+
+            
+        }
+
+        li > p {
+            vertical-align: middle;
+            padding: 10px 20px;
+        }
+    </style>
+    
+    <div class="wrap">
+        <ul id="bands">
+            <li></li>
+            <li><p>Lorem, ipsum.</p></li>
+            <li><p>Lorem, ipsum dolor.</p></li>
+            <li><p>Lorem, ipsum.</p></li>
+            <li><p>Lorem ipsum dolor sit.</p></li>
+        </ul>
+    </div>
+
+    <script>
+        const bands = ['The Plot in You', 'The Devils Wears Preda', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Miday State', 'We came as Romans', 'Ounterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere but Here', 'An Old Dog']
+
+        const bandList = [...bands]
+
+        bandList.forEach(band => {
+            
+            const bandName = band.split("")
+            if (bandName[0,1,2,3] == T"){}
+            
+            
+            console.log(bandName)
+            
+            
+            
+            //removeArticle(band)
+        })
+        
+        /*
+        function removeArticle(bandName) {
+            if (bandName[0] === 'A ' || 'The ' || 'An '){
+                
+            }
+        }
+        */
+    </script>
+
+</body>
+</html>
