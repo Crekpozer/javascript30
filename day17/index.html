@@ -50,11 +50,9 @@
     
     <div class="wrap">
         <ul id="bands">
-            <li></li>
-            <li><p>Lorem, ipsum.</p></li>
-            <li><p>Lorem, ipsum dolor.</p></li>
-            <li><p>Lorem, ipsum.</p></li>
-            <li><p>Lorem ipsum dolor sit.</p></li>
+            <li>
+                Nome da banda
+            </li>
         </ul>
     </div>
 
@@ -63,30 +61,44 @@
 
         const bandList = [...bands]
         const newBandName = []
+        const newBandList = []
+
+        RemoveArticle(bandList)
         
-        bandList.forEach(band => {
         
-            const bandName = band.split(' ')
-            const oldBandName = []
-            if (bandName[0] === 'The'){
-                const bandNameWA = bandName.slice(1)
-                console.log(`Nome da banda: ${bandName}, Nome da banda sem artigo: ${bandNameWA}`)
-                return newBandName.push(bandNameWA)
-            } else if (bandName[0] === 'A') {
-                const bandNameWA = bandName.slice(1)
-                console.log(`Nome da banda: ${bandName}, Nome da banda sem artigo: ${bandNameWA}`)
-                return newBandName.push(bandNameWA)
-            } else if (bandName[0] === 'An') {
-                const bandNameWA = bandName.slice(1)
-                console.log(`Nome da banda: ${bandName}, Nome da banda sem artigo: ${bandNameWA}`)
-                return newBandName.push(bandNameWA)
-            }
+        
+        
+        function RemoveArticle(bandList){
+
+            bandList.forEach(band => {
             
-            console.log(`Nome da banda: ${bandName}`)
+                var myregex = new RegExp(/,/g)
             
-            return bandName
-            
-        })
+                const bandName = band.split(' ')
+                const oldBandName = []
+                if (bandName[0] === 'The'){
+                    const bandNameWA = bandName.slice(1)
+                    console.log(`Nome da banda: ${bandName} , Nome da banda sem artigo: ${bandNameWA}`)
+                    newBandList.push(`${bandName.toString().replace(myregex, ' ')}`,`${bandNameWA.toString().replace(myregex, ' ')}`)
+                } else if (bandName[0] === 'A') {
+                    const bandNameWA = bandName.slice(1)
+                    console.log(`Nome da banda: ${bandName} , Nome da banda sem artigo: ${bandNameWA}`)
+                    newBandList.push(`${bandName.toString().replace(myregex, ' ')}`,`${bandNameWA.toString().replace(myregex, ' ')}`)
+                } else if (bandName[0] === 'An') {
+                    const bandNameWA = bandName.slice(1)
+                    console.log(`Nome da banda: ${bandName} , Nome da banda sem artigo: ${bandNameWA}`)
+                    newBandList.push(`${bandName.toString().replace(myregex, ' ')}`,`${bandNameWA.toString().replace(myregex, ' ')}`)
+                } else {
+                    newBandList.push(`${bandName.toString().replace(myregex, ' ')}`)
+                    console.log(`Nome da banda: ${bandName}`)
+                }
+
+                
+                
+                
+            })
+        }
+        
         
     </script>
 
