@@ -62,27 +62,32 @@
         const bands = ['The Plot in You', 'The Devils Wears Preda', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Miday State', 'We came as Romans', 'Ounterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere but Here', 'An Old Dog']
 
         const bandList = [...bands]
-
+        const newBandName = []
+        
         bandList.forEach(band => {
+        
+            const bandName = band.split(' ')
+            const oldBandName = []
+            if (bandName[0] === 'The'){
+                const bandNameWA = bandName.slice(1)
+                console.log(`Nome da banda: ${bandName}, Nome da banda sem artigo: ${bandNameWA}`)
+                return newBandName.push(bandNameWA)
+            } else if (bandName[0] === 'A') {
+                const bandNameWA = bandName.slice(1)
+                console.log(`Nome da banda: ${bandName}, Nome da banda sem artigo: ${bandNameWA}`)
+                return newBandName.push(bandNameWA)
+            } else if (bandName[0] === 'An') {
+                const bandNameWA = bandName.slice(1)
+                console.log(`Nome da banda: ${bandName}, Nome da banda sem artigo: ${bandNameWA}`)
+                return newBandName.push(bandNameWA)
+            }
             
-            const bandName = band.split("")
-            if (bandName[0,1,2,3] == T"){}
+            console.log(`Nome da banda: ${bandName}`)
             
+            return bandName
             
-            console.log(bandName)
-            
-            
-            
-            //removeArticle(band)
         })
         
-        /*
-        function removeArticle(bandName) {
-            if (bandName[0] === 'A ' || 'The ' || 'An '){
-                
-            }
-        }
-        */
     </script>
 
 </body>
