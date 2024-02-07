@@ -52,6 +52,17 @@ nav {
     z-index: 1;
 }
 
+/* Configura o comportamento do nav  */
+.fixed-nav {
+    
+    /* Coloca a posição do nav como Fixa */
+    /* OBS. Vale lembrar que o body tentará ocupar esse espaço */
+    /* por isso é importante adicionar a altura da nav como padding no body */
+    /* por meio do JS */
+    position: fixed;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+}
+
 nav ul {
     margin: 0;
     padding: 0;
@@ -60,5 +71,37 @@ nav ul {
 }
 
 nav li {
-    flex: ;
+    flex: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Configura o item da lista que vai ser o logo */
+li.logo {
+    max-width: 0; /* Faz com que a caixa do item fique fechada */
+    overflow: hidden; /* Remove a barra de rolagem horizontal */
+    background: white; /* Define a cor do fundo do item */
+    transition: all 3s; /* Define o tempo de transição */
+    font-weight: 600; /* Define o peso da fonte */
+    font-size: 30px; /* Define o tamanho da fonte */
+}
+
+/* Configura o logo quando aberto */
+.fixed-nav li.logo {
+    max-width: 500px; /* Define o tamanho maximo da caixa do item da lista */ 
+}
+
+li.logo a {
+    color: black;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 20px;
+    display: inline-block;
+    color: white;
+    transition: all .2s;
+    text-transform: uppercase;
 }

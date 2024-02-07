@@ -46,6 +46,38 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci asperiores perferendis molestias quasi eius id veritatis iusto porro voluptas praesentium magnam consectetur cupiditate, officiis cumque maiores ullam incidunt commodi? Dolore?</p>
     </main>
 
-    <script></script>
+    <script>
+        // Buscar a barra de navegação
+        const nav = document.querySelector('#main')
+        const corpo = document.querySelector('.site-wrap')
+
+        // Variavel que armazena a altura do header para alterar o funcionamento da barra de navegação
+        const topOfNav = nav.offsetTop;
+
+        // Função que ajusta a posição da barra de navegação
+        function fixNav() {
+
+            console.log(topOfNav, scrollY, nav.offsetHeight)
+            // If que detecta se o nav já saiu da tela
+            if(window.scrollY >= topOfNav) {
+                
+                // Faz com que o estilo do corpo não ocupe o espaço da barra de navegação, pois quando a barra 'fixa' na tela o corpo tende a a ocupar o espaço
+                document.body.style.paddingTop = nav.offsetHeight = 'px'
+                
+                // Adiciona a classe 'fixed-nav' para indicar ao CSS que a barra deve aparecer em cima
+                nav.classList.add('fixed-nav')
+            } else {
+
+                // Faz com que o estilo do corpo volte a ocupar o espaço normal levando em consideração a barra de navegação de volta ao lugar
+                document.body.style.paddingTop = 0
+
+                // Remove a classe 'fixed-nav' para indicar ao CSS que a barra volta a aparecer normalmente dentro do header
+                nav.classList.remove('fixed-nav')
+            }
+        }
+
+        window.addEventListener('scroll', fixNav)
+
+    </script>
 </body>
 </html>
