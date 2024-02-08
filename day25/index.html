@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captura, propagação, bubbling e Once</title>
+</head>
+<body>
+    <div class="one">
+        <div class="two">
+            <div class="three">
+            </div>
+        </div>
+    </div>
+
+    <button></button>
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *::before, *::after { box-sizing: inherit; }
+
+        div {
+            width: 100%;
+            padding: 100px;
+        }
+
+        .one {
+            background: thistle;
+        }
+
+        .two {
+            background: mistyrose;
+        }
+
+        .three {
+            background: coral;
+        }
+    </style>
+
+    <script>
+
+        // Quando clicamos em elementos dentro de outros elementos é poissivel que o evento resultante seja diferente do que esperamos. O click acaba sempre retornando varias divs em vez de só a que foi clicada. Para contornar a situação devemos usar 'e.stopPropagation()' que evitará que as divs que estão dentro do clickado e '{ capture: false }' para que as divs de fora sejam selecionadas
+
+        const divs = document.querySelectorAll('div')
+        divs.forEach(div => div.addEventListener('mousedown', logText, {
+            capture: false, // Faz com que a ordem de exibição das divs sejam inversas
+            once: true // Faz com que o evento não dispare multiplas vezes
+        }))
+
+        const button = document.querySelector('button')
+
+        function logText(e){
+            console.log(this.classList.value)
+            //e.stopPropagation(); // Evita que as divs de fora sejam selecionadas
+        }
+
+        button.addEventListener('click', () => {
+            console.log('Click!!')
+        }, {once:true})
+    </script>
+</body>
+</html>
