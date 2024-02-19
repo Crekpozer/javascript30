@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Playback Speed</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <video class="flex" height="360" src="pexels-huu-huynh-19757067 (360p).mp4" width="640" loop controls></video>
+        <div class="speed">
+            <div class="speed-bar">1x</div>
+        </div>
+    </div>
+
+    <script>
+        const speed = document.querySelector('.speed')
+        const bar = speed.querySelector('.speed-bar')
+        const video = document.querySelector('.flex')
+
+        function handleMove(e){
+            const y = e.pageY - this.offsetTop
+            const percent = y / this.offsetHeight
+            const min = 0.4
+            const max = 4
+            const height = (percent * 100) + '%'
+            const playbackRate = percent * (max - min) + min
+            
+            bar.style.height = height
+            bar.textContent = playbackRate.toFixed(2) + 'x'
+            video.playbackRate = playbackRate
+        }
+        
+        speed.addEventListener('mousemove', handleMove)
+    </script>
+</body>
+</html>
